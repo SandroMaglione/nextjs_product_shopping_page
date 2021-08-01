@@ -2,8 +2,11 @@ import { ReactElement, ReactNode } from 'react';
 import Image from 'next/image';
 import JupiterLogo from '../public/images/jupiter-logo.png';
 import JupiterProfile from '../public/images/jupiter-profile.png';
+import { useAppDispatch } from '@app/hooks';
+import { toggleShowingCart } from '@controllers/features/cart/cart-slice';
 
 export default function NavMenu(): ReactElement {
+  const dispatch = useAppDispatch();
   return (
     <nav className="flex py-[6px] px-[23px] items-center gap-[37.5px] border-b border-gray-200 mb-[22px]">
       <div className="flex items-center justify-center flex-none">
@@ -45,6 +48,9 @@ export default function NavMenu(): ReactElement {
         </div>
         <NavItem
           label="Recipes"
+          onClick={() => {
+            location.href = './placeholder';
+          }}
           icon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -64,6 +70,9 @@ export default function NavMenu(): ReactElement {
         />
         <NavItem
           label="Shop"
+          onClick={() => {
+            location.href = './placeholder';
+          }}
           icon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -83,6 +92,9 @@ export default function NavMenu(): ReactElement {
         />
         <NavItem
           label="Profile"
+          onClick={() => {
+            location.href = './placeholder';
+          }}
           icon={
             <div className="relative">
               <Image
@@ -96,6 +108,9 @@ export default function NavMenu(): ReactElement {
         />
         <NavItem
           label="Settings"
+          onClick={() => {
+            location.href = './placeholder';
+          }}
           icon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -115,6 +130,7 @@ export default function NavMenu(): ReactElement {
         />
         <NavItem
           label="Cart"
+          onClick={() => dispatch(toggleShowingCart())}
           icon={
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -140,16 +156,21 @@ export default function NavMenu(): ReactElement {
 const NavItem = ({
   label,
   icon,
+  onClick,
 }: {
+  onClick?: () => void;
   label: string;
   icon: ReactNode;
 }): ReactElement => {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <button
+      className="flex flex-col items-center justify-center"
+      onClick={onClick}
+    >
       <div className="flex items-center justify-center flex-1">{icon}</div>
       <div className="flex-none">
         <span className="text-xs font-light">{label}</span>
       </div>
-    </div>
+    </button>
   );
 };

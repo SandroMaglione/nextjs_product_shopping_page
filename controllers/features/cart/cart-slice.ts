@@ -8,10 +8,12 @@ import {
 
 interface CartState {
   productInCart: Record<ProductKey, ProductInCart>;
+  isCartShowing: boolean;
 }
 
 const initialState: CartState = {
   productInCart: {},
+  isCartShowing: false,
 };
 
 const cartSlice = createSlice({
@@ -33,6 +35,9 @@ const cartSlice = createSlice({
         state.productInCart
       );
     },
+    toggleShowingCart(state) {
+      state.isCartShowing = !state.isCartShowing;
+    },
   },
 });
 
@@ -40,5 +45,6 @@ export const {
   addProductToCart,
   subtractProductFromCart,
   removeProductFromCart,
+  toggleShowingCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;
