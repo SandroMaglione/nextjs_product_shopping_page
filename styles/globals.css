@@ -4,6 +4,6 @@
 
 @layer components {
   .btn {
-    @apply px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+    @apply w-full h-[36px] py-[24px] flex items-center justify-center text-base text-[#38C2DE] border border-[#38C2DE] hover:bg-gray-50 hover:border-[#376edd] hover:text-[#376edd];
   }
 }
