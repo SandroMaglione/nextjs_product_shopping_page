@@ -13,6 +13,7 @@ import {
 import { selectProductsByCategory } from '@controllers/features/products/products-slice';
 import { toggleProductCategory } from '@controllers/features/categories/categories-slice';
 import { toArray } from 'fp-ts/lib/Record';
+import NavMenu from '@components/NavMenu';
 
 export default function Home(): ReactElement {
   const categoryList = useAppSelector((state) => state.categories.categoryList);
@@ -21,7 +22,7 @@ export default function Home(): ReactElement {
   const dispatch = useAppDispatch();
   return (
     <div>
-      <nav>Products</nav>
+      <NavMenu />
       {/* Categories filter */}
       <div>
         {pipe(
